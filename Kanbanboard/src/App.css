@@ -19,11 +19,16 @@ nav{
   border: 1px solid white;
 }
 nav img{
-  height: 5vh;
+  height: 4vh;
+  
 }
 
 h1 {
   color: white;
+  font-size: 2.2rem;
+}
+h2{
+  font-size: 1.8rem;
 }
 .main-container{
   display: flex;
@@ -34,8 +39,10 @@ h1 {
   
     display: flex;
     flex-direction: column;
+    gap: 2rem;
     padding: 1rem;
     border: 1px solid white;
+    font-size: 1.1rem;
 }
 a {
   color: white;
@@ -46,6 +53,8 @@ footer {
   color: white;
   padding: 1rem;
   border: 1px solid white;
+  text-align: center;
+  font-size: 0.7rem;
 }
 
 .container {
@@ -58,7 +67,43 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #073e18;
+  width: 100%;
 }
 
 .start{
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 40vw;
+  min-width: 300px;
+  height: 40vh;
+  min-height: 200px;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
 }
+
+.btn{
+  border-radius: 30px;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-start{
+  width: 100px;
+  border:  1px #2B1608 solid;
+  background-color: #073e18;
+  color: white;
+}
+.btn-start:hover{
+  width: 100px;
+  border:  1px #2B1608 solid;
+  background-color: #0f9239;
+  color: white;
+}
+
