@@ -3,7 +3,7 @@ import React from 'react'
 export const ItemCard = (props) => {
     const { oneKanban , deleteTask} =props
   return (
-    <div key={oneKanban.id} className="card-container">
+    <div className="card-container">
         <h3>{oneKanban.title}</h3>
         <p>{oneKanban.description}</p>
         <p>{oneKanban.assignee}</p>

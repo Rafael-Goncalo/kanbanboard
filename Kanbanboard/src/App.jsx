@@ -13,7 +13,8 @@ import { ToDo } from './components/ToDo'
 function App() {
   const [data, setKanbanData] = useState(kanbanData)
 const deleteTask = taskId => {
-  const taskFiltered = kanbanData.filter(oneKanban => {
+  // ! i need to use data here and not kanbanData because its new variable and i update this one not kanbanData after
+  const taskFiltered = data.filter(oneKanban => {
       return taskId !== oneKanban.id
   })
   setKanbanData(taskFiltered);

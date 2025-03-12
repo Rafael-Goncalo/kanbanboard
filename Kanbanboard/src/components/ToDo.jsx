@@ -13,8 +13,8 @@ export const ToDo = (props) => {
                 if(oneKanban.status === 'To Do')
                 {
                     return (
-
-                     <ItemCard oneKanban= {oneKanban} deleteTask={deleteTask}/>
+                      // we need the key after the map
+                     <ItemCard key={oneKanban.id} oneKanban= {oneKanban} deleteTask={deleteTask}/>
                 )
                
                 }

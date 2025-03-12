@@ -12,7 +12,7 @@ export const Done = (props) => {
                     {
                         return (
     
-                         <ItemCard oneKanban= {oneKanban} deleteTask={deleteTask}/>   
+                         <ItemCard key={oneKanban.id} oneKanban= {oneKanban} deleteTask={deleteTask}/>   
                     )
                    
                     }
