@@ -1,5 +1,15 @@
+@import url('https://fonts.cdnfonts.com/css/chalkduster');
+@import url('https://fonts.cdnfonts.com/css/gunny-rewritten');
+:root{
+  --white: #FBFBFD;
+  --green: #073e18;
+  --yellow: #ffce80;
+  --blue: #4a9ecf;
+  --red: #b34d31;
+
+}
 *{
-  font-family: Chalkduster;
+  
   margin:0;
   padding: 0;
   box-sizing: border-box;
@@ -9,6 +19,7 @@ body{
   background-color: #2B1608;
   height: 100vh;
   overflow-y: hidden;
+  font-family: 'Chalkduster', sans-serif;
 }
 
 nav{
@@ -17,7 +28,7 @@ nav{
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid white;
+  border: 1px solid var(--white);
 }
 nav img{
   height: 4vh;
@@ -25,7 +36,7 @@ nav img{
 }
 
 h1 {
-  color: white;
+  color: 	var(--white);
   font-size: 2.2rem;
 }
 h2{
@@ -34,7 +45,7 @@ h2{
 .main-container{
   display: flex;
   height: 88vh;
-  border: 1px solid white;
+  border: 1px solid 	var(--white);
 }
 .sidebar {
   
@@ -42,18 +53,18 @@ h2{
     flex-direction: column;
     gap: 2rem;
     padding: 1rem;
-    border: 1px solid white;
+    border: 1px solid 	var(--white);
     font-size: 1.1rem;
 }
 a {
-  color: white;
+  color: 	var(--white);
 }
 
 footer {
   height: 6vh;
-  color: white;
+  color: 	var(--white);
   padding: 1rem;
-  border: 1px solid white;
+  border: 1px solid 	var(--white);
   text-align: center;
   font-size: 0.7rem;
 }
@@ -68,12 +79,12 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #073e18;
+  background-color: var(--green);
   width: 100%;
 }
 
 .start{
-  background-color: whitesmoke;
+  background-color: 	var(--white);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -98,23 +109,89 @@ footer {
 .btn-start{
   width: 100px;
   border:  1px #2B1608 solid;
-  background-color: #073e18;
-  color: white;
+  background-color: var(--green);
+  color: 	var(--white);
 }
 .btn-start:hover{
   width: 100px;
   border:  1px #2B1608 solid;
   background-color: #0f9239;
-  color: white;
+  color: 	var(--white);
 }
 
 .list-container{
+  background-color: var(--green);
+  color: 	var(--white);
   padding: 20px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 }
 .toDo-container, .doing-container, .done-container{
-  width: 100px;
+  width: 100% ;
+  border : 2px 	var(--white) solid;
+  border-radius: 20px;
+  padding: 20px
   /* justify-content: space-between; */
+}
+.toDo-container{
+  border-color: var(--blue);
+}
+.toDo-container h2{
+  color: var(--blue);
+}
+.doing-container{
+  border-color: var(--yellow);
+}
+.doing-container h2{
+  color: var(--yellow);
+}
+
+.done-container{
+  border-color: var(--red);
+}
+.done-container h2{
+  color: var(--red);
+}
+
+.toDo-container h2, .done-container h2,.doing-container h2{
+  padding-bottom: 20px;
+  text-decoration:underline 3px;
+  text-underline-offset: 10px;
+
+}
+.card-container{
+  background: #eae672;
+  color: black;
+  position: relative;
+  transform: rotate(-2deg);
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-family: 'Gunny Rewritten', sans-serif;
+}
+.card-container h3{
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.date-container{
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.card-container p{
+  padding: 0 10px;
+}
+.card-container section{
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-container div:last-child{
+  text-align: center;
 }
