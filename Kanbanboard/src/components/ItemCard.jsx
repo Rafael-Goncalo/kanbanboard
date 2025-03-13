@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const ItemCard = (props) => {
     const { oneKanban , deleteTask} =props
@@ -10,16 +11,18 @@ export const ItemCard = (props) => {
           <span>{oneKanban.createdDate}</span> - <span>{oneKanban.dueDate}</span>
         </div>
 
-        <p>{oneKanban.description}</p>
-
         <section>
-          <div>To {oneKanban.assignee}</div>
+          <Link to ={`/tasks/${oneKanban.id}`}>
+          <button>
+            details
+          </button></Link>
+
           <button onClick={() => 
             deleteTask(oneKanban.id)
         }>Delete</button>
         </section>
-
-        <div>{oneKanban.priority}</div>
+        <div>To {oneKanban.assignee}</div>
+       
         
         
     </div>

@@ -1,10 +1,11 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export const Sidebar = () => {
   return (
     <div className='sidebar'>
-        <a href="">Home</a>
-        <a href="">About</a>
+       <NavLink to="/">Home</NavLink> 
+       <NavLink to="/about">About</NavLink> 
     </div>
   )
 }

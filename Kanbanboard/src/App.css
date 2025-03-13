@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/chalkduster');
 @import url('https://fonts.cdnfonts.com/css/gunny-rewritten');
+
 :root{
   --white: #FBFBFD;
   --green: #073e18;
@@ -193,5 +194,13 @@ footer {
 }
 
 .card-container div:last-child{
+  text-align: center;
+}
+
+.card-container-details{
+  background-color: var(--green);
+  color: var(--white);
+  width: 100%;
+  padding: 30px;
   text-align: center;
 }

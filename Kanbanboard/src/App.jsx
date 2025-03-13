@@ -1,26 +1,23 @@
 import './App.css'
-import React, { useState } from 'react'
-import kanbanData from './assets/kanban.json'
-import { Doing } from './components/Doing'
-import { Done } from './components/Done'
+import React from 'react'
+
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
 import { Sidebar } from './components/Sidebar'
-import { ToDo } from './components/ToDo'
+import { Route, Routes } from 'react-router-dom'
+import { Dashboard } from './pages/Dashboard'
+import { About } from './pages/About'
+import { ItemDetails } from './pages/ItemDetails'
+import { NotFound } from './pages/NotFound'
+
+
+
 
 
 
 function App() {
-  const [data, setKanbanData] = useState(kanbanData)
-const deleteTask = taskId => {
-  // ! i need to use data here and not kanbanData because its new variable and i update this one not kanbanData after
-  const taskFiltered = data.filter(oneKanban => {
-      return taskId !== oneKanban.id
-  })
-  setKanbanData(taskFiltered);
-
-}
-console.log(data);
+ 
+// console.log(data);
   return (
     <div className='container'>
     <Navbar/>
@@ -32,11 +29,15 @@ console.log(data);
           <button className='btn btn-start'>Start</button>
           </div>
       </div> */}
-      <div className="list-container">
-        <ToDo kanbanData = {data} deleteTask = {deleteTask}/>  
-        <Doing kanbanData = {data} deleteTask = {deleteTask}/>
-        <Done kanbanData = {data} deleteTask = {deleteTask}/>
-      </div>
+      {/* here we need all pages */}
+      <Routes>
+        <Route path = "/" element={<Dashboard/>}/>
+        <Route path = "/about" element={<About/>}/>
+        <Route path = "/tasks/:taskId" element={<ItemDetails/>}/>
+        <Route path = "*" element={<NotFound/>}/>
+
+      </Routes>
+     
     </div>
     
 
