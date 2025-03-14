@@ -1,5 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/chalkduster');
 @import url('https://fonts.cdnfonts.com/css/gunny-rewritten');
+@import '@mantine/core/styles.css';
+@import '@mantine/dates/styles.css';
 
 :root{
   --white: #FBFBFD;
@@ -18,8 +20,8 @@
 
 body{
   background-color: #2B1608;
-  height: 100vh;
-  overflow-y: hidden;
+  min-height: 100vh;
+  /* overflow-y: hidden; */
   font-family: 'Chalkduster', sans-serif;
 }
 
@@ -124,6 +126,7 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    /* still have to fix here */
 }
 
 .about-container li {
@@ -197,6 +200,23 @@ footer {
 }
 .done-container h2{
   color: var(--red);
+}
+
+.form-container {
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+  padding: 20px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  align-self: flex-start;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .list-container{

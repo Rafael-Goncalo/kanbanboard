@@ -19,6 +19,7 @@ function App() {
  
 // console.log(data);
   return (
+ 
     <div className='container'>
     <Navbar/>
     <div className="main-container">
@@ -44,6 +45,7 @@ function App() {
     <Footer/>
   
     </div>
+ 
   )
 }
 

@@ -8,13 +8,13 @@ export const ItemCard = (props) => {
         <h3>{oneKanban.title}</h3>
 
         <div className='date-container'>
-          <span>{oneKanban.createdDate}</span> - <span>{oneKanban.dueDate}</span>
+          <span>{typeof oneKanban.createdDate === "object" ? oneKanban.createdDate.toISOString().split("T")[0] : oneKanban.createdDate }</span> - <span>{typeof oneKanban.dueDate === "object" ? oneKanban.dueDate.toISOString().split("T")[0] : oneKanban.dueDate }</span>
         </div>
 
         <section>
           <Link to ={`/tasks/${oneKanban.id}`}>
           <button>
-            details
+            Details
           </button></Link>
 
           <button onClick={() => 

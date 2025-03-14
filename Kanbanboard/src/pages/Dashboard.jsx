@@ -3,6 +3,10 @@ import { Doing } from '../components/Doing'
 import { Done } from '../components/Done'
 import { ToDo } from '../components/ToDo'
 import kanbanData from '../assets/kanban.json'
+import { FormTask } from '../components/FormTask'
+import { MantineProvider } from '@mantine/core';
+import { DatesProvider } from '@mantine/dates';
+
 
 export const Dashboard = () => {
     const [data, setKanbanData] = useState(kanbanData)
@@ -15,10 +19,20 @@ export const Dashboard = () => {
     
     }
   return (
-     <div className="list-container">
-            <ToDo kanbanData = {data} deleteTask = {deleteTask}/>  
-            <Doing kanbanData = {data} deleteTask = {deleteTask}/>
-            <Done kanbanData = {data} deleteTask = {deleteTask}/>
-          </div>
+    <>
+      <div className="form-container">
+      <MantineProvider>
+        <DatesProvider>
+          <FormTask data={data} setKanbanData= {setKanbanData}/>
+        </DatesProvider>
+      </MantineProvider>
+          
+      </div>
+      <div className="list-container">
+              <ToDo kanbanData = {data} deleteTask = {deleteTask}/>  
+              <Doing kanbanData = {data} deleteTask = {deleteTask}/>
+              <Done kanbanData = {data} deleteTask = {deleteTask}/>
+      </div>
+    </>
   )
 }
