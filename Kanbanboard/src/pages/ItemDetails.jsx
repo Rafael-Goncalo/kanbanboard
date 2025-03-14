@@ -13,20 +13,21 @@ export const ItemDetails = () => {
       <div className="card-container-details">
           <h2>{oneTask.title}</h2>
 
-          <h3>To {oneTask.assignee}</h3>
+          <h3>to: {oneTask.assignee}</h3>
           <p>
-            {oneTask.description}
+            Details: {oneTask.description}
           </p>
-          <div>{oneTask.priority}</div>
+          <div>Priority: {oneTask.priority}</div>
+          {/* Importance */}
           
           <div>
-          Created : 
-            {oneTask.createdDate}
+          Created: {oneTask.createdDate}
           </div>
           <div>
-            Deadline : {oneTask.dueDate}
+            Deadline: {oneTask.dueDate}
           </div>
-          <div>{oneTask.status}</div>
+          <div>Status: {oneTask.status}</div> 
+          {/* Stage/ Phase */}
           
           {/* <section>
             <Link to ={`/tasks/${oneTask.id}`}>
