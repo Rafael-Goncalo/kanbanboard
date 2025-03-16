@@ -1,3 +1,6 @@
+// This page is the Root page. The Starting point or
+// top-level container of the App.
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // import './index.css'

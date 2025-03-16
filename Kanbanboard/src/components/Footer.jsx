@@ -6,7 +6,7 @@ export const Footer = () => {
     <footer>
         <span>
           <Link to="https://github.com/Rafael-Goncalo/kanbanboard" >
-          https://github.com/Rafael-Goncalo/kanbanboard
+          * Click here to see the code *
           </Link>
           </span>
     </footer>

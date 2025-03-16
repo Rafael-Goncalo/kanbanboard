@@ -14,12 +14,12 @@ export const FormTask = (props) => {
     "dueDate": new Date()
   })
 // e.preventDefault() // Somewhere here.
-  function handleOnChange(e){
+  function handleOnChange(e) {
     const name= e.target.name;
     const value = e.target.value;
     setNewTask({...newTask, [name] : value})
   }
-  function handleFormSubmit(e ) {
+  function handleFormSubmit(e) {
     e.preventDefault();
     setKanbanData([...data, newTask]);
 

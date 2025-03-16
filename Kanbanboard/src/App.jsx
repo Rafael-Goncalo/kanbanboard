@@ -1,3 +1,5 @@
+// the Skeleton of a React App. Framework
+
 import './App.css'
 import React from 'react'
 
@@ -9,11 +11,6 @@ import { Dashboard } from './pages/Dashboard'
 import { About } from './pages/About'
 import { ItemDetails } from './pages/ItemDetails'
 import { NotFound } from './pages/NotFound'
-
-
-
-
-
 
 function App() {
  
