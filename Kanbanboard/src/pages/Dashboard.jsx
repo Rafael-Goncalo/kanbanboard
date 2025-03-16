@@ -1,15 +1,14 @@
-import React, {useState} from 'react'
+
 import { Doing } from '../components/Doing'
 import { Done } from '../components/Done'
 import { ToDo } from '../components/ToDo'
-import kanbanData from '../assets/kanban.json'
 import { FormTask } from '../components/FormTask'
 import { MantineProvider } from '@mantine/core';
 import { DatesProvider } from '@mantine/dates';
 
 
-export const Dashboard = () => {
-    const [data, setKanbanData] = useState(kanbanData)
+export const Dashboard = (props) => {
+    const {data, setKanbanData, showAddTask, setTaskDataUpdate , setShowAddTask, taskDataUpdate} = props
     const deleteTask = taskId => {
       // ! i need to use data here and not kanbanData because its new variable and i update this one not kanbanData after
       const taskFiltered = data.filter(oneKanban => {
@@ -20,18 +19,22 @@ export const Dashboard = () => {
     }
   return (
     <>
+    {
+      showAddTask && (
       <div className="form-container">
       <MantineProvider>
         <DatesProvider>
-          <FormTask data={data} setKanbanData= {setKanbanData}/>
+          <FormTask data={data} setKanbanData= {setKanbanData} taskDataUpdate={taskDataUpdate} setTaskDataUpdate= {setTaskDataUpdate} setShowAddTask = {setShowAddTask}/>
         </DatesProvider>
       </MantineProvider>
           
-      </div>
+      </div>)
+    }
+      
       <div className="list-container">
-              <ToDo kanbanData = {data} deleteTask = {deleteTask}/>  
-              <Doing kanbanData = {data} deleteTask = {deleteTask}/>
-              <Done kanbanData = {data} deleteTask = {deleteTask}/>
+              <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>  
+              <Doing data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>
+              <Done data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>
       </div>
     </>
   )

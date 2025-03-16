@@ -25,6 +25,19 @@ body{
   font-family: 'Chalkduster', sans-serif;
 }
 
+a {
+  font-size: 20px;
+}
+
+button {
+  font-size: 13px;
+  border-radius: 50px;
+}
+
+/* #text-area {
+  color: #073e18;
+} */
+
 nav{
   display: flex;
   height: 6vh;
@@ -116,7 +129,16 @@ footer {
   color: 	var(--white);
 }
 
-.about-container {
+.about-entire-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green);
+    width: 100%;
+  }
+
+#about-container {
     background-color: var(--green);
     color: var(--white);
     display: flex;
@@ -126,18 +148,28 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    /* still have to fix here */
 }
 
-.about-container li {
-  margin-bottom: 20px;
+#about-container li {
+  margin-bottom: 10px;
 }
 
-.about-container h2,
-.about-container h3  {
+#about-container  {
   text-align: center;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
+}
+
+#about-us-container {
+  background-color: var(--green);
+    color: var(--white);
+    display: flex;
+    justify-content: space-evenly;
+    text-align: justify;
+    width: 100%;
+    /* max-width: 800px; */
+    /* margin: 0 auto; */
+    padding: 20px;
 }
 
 .card-container{
@@ -231,7 +263,7 @@ footer {
 
 .main-container{
   display: flex;
-  height: 88vh;
+  min-height: 88vh;
   border: 1px solid 	var(--white);
 }
 

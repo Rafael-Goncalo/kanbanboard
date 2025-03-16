@@ -3,8 +3,8 @@ import React from 'react'
 export const About = () => {
   return (
     <>
-    <div className="about-container">
-      <section>
+    <div className='about-entire-container'>
+      <section id="about-container">
       <h2>Kanban Instructions</h2>
       <ul>
         <li>Create a card and give it a descriptive title.</li>
@@ -17,7 +17,7 @@ export const About = () => {
       <h3>Time to Start!</h3>
         
       </section>
-      <section>
+      <section id="about-us-container">
         <div>
           <h2>Rafa</h2>
           <img src="" alt="" />

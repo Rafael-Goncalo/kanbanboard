@@ -1,31 +1,100 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {DatePickerInput} from '@mantine/dates';
+import {v4 as uuidv4} from 'uuid';
+import dayjs from 'dayjs';
 
 export const FormTask = (props) => {
-  const {data, setKanbanData} = props;
+  const {data, setKanbanData, taskDataUpdate, setTaskDataUpdate, setShowAddTask} = props;
+
+  
   const [newTask, setNewTask] = useState({
-    "id": data.length,
-    "title": "",
-    "description": "",
-    "assignee": "",
-    "status": "To Do",
-    "priority": "Low",
-    "createdDate": new Date(),
-    "dueDate": new Date()
+    id: uuidv4(),
+    title: "",
+    description: "",
+    assignee: "",
+    status: "To Do",
+    priority: "Low",
+    createdDate: new Date(),
+    dueDate: new Date()
   })
+  useEffect(() => {
+  if(taskDataUpdate){
+      setNewTask({
+        id: taskDataUpdate.id,
+        title: taskDataUpdate.title,
+        description: taskDataUpdate.description,
+        assignee: taskDataUpdate.assignee,
+        status: taskDataUpdate.status,
+        priority: taskDataUpdate.priority,
+        createdDate: new Date(taskDataUpdate.createdDate),
+        dueDate: dayjs(new Date(taskDataUpdate.dueDate)).add(-1, 'day')
+      })
+    }
+  }, [taskDataUpdate])
+
+  function resetForm()
+  {
+    setNewTask({
+      id: uuidv4(),
+      title: "",
+      description: "",
+      assignee: "",
+      status: "To Do",
+      priority: "Low",
+      createdDate: new Date(),
+      dueDate: new Date()
+    })
+  }
+  
 // e.preventDefault() // Somewhere here.
   function handleOnChange(e) {
     const name= e.target.name;
     const value = e.target.value;
     setNewTask({...newTask, [name] : value})
+    
+    
   }
   function handleFormSubmit(e) {
+    // console.log(newTask)
+    // setNewTask({...newTask, ["id"] : uuidv4(), ["createdDate"] : new Date()})
+    // console.log(newTask)
     e.preventDefault();
-    setKanbanData([...data, newTask]);
+    // update part
+    if(taskDataUpdate){
+      // i create a copy of data and update one task with this id
+      const updatedData = data.map(task => 
+        task.id === taskDataUpdate.id ? 
+        // {...task, ...newTask} =
+        {
+          id: task.id,
+          title: newTask.title,
+          description: newTask.description,
+          assignee: newTask.assignee,
+          status: newTask.status,
+          priority: newTask.priority,
+          createDate: newTask.createdDate,
+          dueDate: dayjs(newTask.dueDate).add(1, 'day').toDate(),
+        } : task
+      )
+      // i change data with the new array
+      setKanbanData(updatedData)
+     
+      // i have nothing to update now so taskDataUpdate need to be null
+      setTaskDataUpdate(null)
+      
+// create part
+    }else{
+      setKanbanData([...data, {...newTask, dueDate: dayjs(newTask.dueDate).add(1, 'day').toDate()}])
+    }
+     //  i set all input value with default value
+      resetForm()
+      // close the form
+      setShowAddTask(false)
 
   }
   return (
     <form className='form-container' onSubmit={handleFormSubmit}>
+      <h3>{taskDataUpdate ? `Update ${taskDataUpdate.title}` : 'Create new Task' }</h3>
       <div> 
 
         <label> Title 
@@ -57,14 +126,14 @@ export const FormTask = (props) => {
         </label>
 
       </div>
-
+{/* id="text-area" */}
       <div>
         <label>
             <input type="textarea" name="description" placeholder="describe your task here" value={newTask.description} onChange={handleOnChange}/>
         </label>
       </div>
 
-      <button type="submit"> Create </button>
+      <button type="submit">{taskDataUpdate ? 'Update' : 'Create'}</button>
       
     </form>
   )
