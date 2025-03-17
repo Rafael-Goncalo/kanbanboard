@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom'
 import { FormTask } from '../components/FormTask'
 import { MantineProvider } from '@mantine/core';
 import { DatesProvider } from '@mantine/dates';
+import { useNavigate } from "react-router-dom";
 
 export const ItemDetails = (props) => {
-  const {data, showAddTask, setKanbanData, taskDataUpdate, setTaskDataUpdate, setShowAddTask} = props
-  // console.log(useParams())
+  const {data, showAddTask, setKanbanData, taskDataUpdate, setTaskDataUpdate, setShowAddTask, deleteTask} = props
   const taskId = useParams().taskId
-  console.log(taskId)
   const oneTask = data.find(task => task.id === taskId)
-  console.log(oneTask)
+  const nav = useNavigate();
+  
   return (
     <>
     {
@@ -47,9 +47,16 @@ export const ItemDetails = (props) => {
           
           <section>
 
-            <a> <i class="fa-solid fa-backward"></i></a>
-            <a> <i class="fa-solid fa-arrows-rotate"></i> </a>
-            <a> <i class="fa-solid fa-trash"></i> </a>
+            <Link to='/' className='btn-details'> <i className="fa-solid fa-backward"></i></Link>
+            <a className='btn-update' onClick= { () => {
+            setTaskDataUpdate(oneTask)
+            setShowAddTask(true)
+            }}> <i className="fa-solid fa-arrows-rotate"></i> </a>
+            <a className='btn-delete' onClick={
+              () => {
+            deleteTask(oneTask.id)
+              nav("/")
+            }}> <i className="fa-solid fa-trash"></i> </a>
           </section>
           
        

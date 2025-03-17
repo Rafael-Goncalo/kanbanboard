@@ -18,6 +18,14 @@ function App() {
   const [taskDataUpdate, setTaskDataUpdate] = useState(null);
   // console.log(taskDataUpdate);
 // console.log(showAddTask);
+function deleteTask (taskId) {
+  // ! i need to use data here and not kanbanData because its new variable and i update this one not kanbanData after
+  const taskFiltered = data.filter(oneKanban => {
+      return taskId !== oneKanban.id
+  })
+  setKanbanData(taskFiltered);
+
+}
   function toggleShowAddTask(){
 
     setShowAddTask(!showAddTask)
@@ -37,9 +45,9 @@ function App() {
       </div> */}
       {/* here we need all pages */}
       <Routes>
-        <Route path = "/" element={<Dashboard data={data} setKanbanData={setKanbanData} showAddTask = {showAddTask} taskDataUpdate={taskDataUpdate} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask= {setShowAddTask}/>}/>
+        <Route path = "/" element={<Dashboard data={data} setKanbanData={setKanbanData} showAddTask = {showAddTask} taskDataUpdate={taskDataUpdate} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask= {setShowAddTask} deleteTask={deleteTask}/>}/>
         <Route path = "/about" element={<About/>}/>
-        <Route path = "/tasks/:taskId" element={<ItemDetails data={data}  setKanbanData={setKanbanData} showAddTask = {showAddTask} taskDataUpdate={taskDataUpdate} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask= {setShowAddTask}/>}/>
+        <Route path = "/tasks/:taskId" element={<ItemDetails data={data}  setKanbanData={setKanbanData} showAddTask = {showAddTask} taskDataUpdate={taskDataUpdate} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask= {setShowAddTask}  deleteTask={deleteTask}/>}/>
         <Route path = "*" element={<NotFound/>}/>
 
       </Routes>

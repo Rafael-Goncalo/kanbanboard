@@ -26,7 +26,7 @@ export const FormTask = (props) => {
         assignee: taskDataUpdate.assignee,
         status: taskDataUpdate.status,
         priority: taskDataUpdate.priority,
-        createdDate: new Date(taskDataUpdate.createdDate),
+        createdDate: taskDataUpdate.createdDate,
         dueDate: dayjs(new Date(taskDataUpdate.dueDate)).add(-1, 'day')
       })
     }
@@ -72,13 +72,13 @@ export const FormTask = (props) => {
           assignee: newTask.assignee,
           status: newTask.status,
           priority: newTask.priority,
-          createDate: newTask.createdDate,
+          createdDate: newTask.createdDate,
           dueDate: dayjs(newTask.dueDate).add(1, 'day').toDate(),
         } : task
       )
       // i change data with the new array
       setKanbanData(updatedData)
-     
+     console.log(updatedData)
       // i have nothing to update now so taskDataUpdate need to be null
       setTaskDataUpdate(null)
       

@@ -10,24 +10,25 @@ export const ItemCard = (props) => {
         <h3>{oneKanban.title}</h3>
 
         <div className='date-container'>
+          
           <span>{typeof oneKanban.createdDate === "object" ? oneKanban.createdDate.toISOString().split("T")[0] : oneKanban.createdDate }</span> - <span>{typeof oneKanban.dueDate === "object" ? oneKanban.dueDate.toISOString().split("T")[0] : oneKanban.dueDate }</span>
         </div>
 
         <section>
-          <Link to ={`/tasks/${oneKanban.id}`}>
-          <a  id="btn-details">
-          <i class="fa-solid fa-circle-info"></i>
-          </a></Link>
-          <a onClick= { () => {
+          <Link to ={`/tasks/${oneKanban.id}`} className="btn-details" >
+          
+          <i className="fa-solid fa-circle-info"></i>
+          </Link>
+          <a className="btn-update" onClick= { () => {
             setTaskDataUpdate(oneKanban)
             setShowAddTask(true)
             }
           }>
-            <i class="fa-solid fa-arrows-rotate"></i>
+            <i className="fa-solid fa-arrows-rotate"></i>
           </a>
-          <a onClick={() => 
+          <a className="btn-delete" onClick={() => 
             deleteTask(oneKanban.id)
-        }><i class="fa-solid fa-trash"></i></a>
+        }><i className="fa-solid fa-trash"></i></a>
         </section>
         <div>To {oneKanban.assignee}</div>
        

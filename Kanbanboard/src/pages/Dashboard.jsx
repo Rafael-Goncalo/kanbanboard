@@ -8,15 +8,20 @@ import { DatesProvider } from '@mantine/dates';
 
 
 export const Dashboard = (props) => {
-    const {data, setKanbanData, showAddTask, setTaskDataUpdate , setShowAddTask, taskDataUpdate} = props
-    const deleteTask = taskId => {
-      // ! i need to use data here and not kanbanData because its new variable and i update this one not kanbanData after
-      const taskFiltered = data.filter(oneKanban => {
-          return taskId !== oneKanban.id
-      })
-      setKanbanData(taskFiltered);
-    
-    }
+    const {data, setKanbanData, showAddTask, setTaskDataUpdate , setShowAddTask, taskDataUpdate, deleteTask} = props
+    // are u here ???? did u see my code ? 
+    // R
+    //  A
+    //   F
+    //    A
+    // R
+    //   A
+    //    F
+    //     A
+    // R
+    //   A
+    //     F
+    //       A DO u see my code?
   return (
     <>
     {

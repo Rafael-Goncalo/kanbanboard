@@ -9,6 +9,8 @@
   --yellow: #ffce80;
   --blue: #4a9ecf;
   --red: #b34d31;
+  --orange:  #E77422;
+  --purple: #9063CD;
 
 }
 *{
@@ -127,6 +129,15 @@ footer {
   border:  1px #2B1608 solid;
   background-color: #0f9239;
   color: 	var(--white);
+}
+.btn-details{
+  color: var(--blue)
+}
+.btn-update{
+  color:var(--purple)
+}
+.btn-delete{
+  color:var(--red)
 }
 
 .about-entire-container {
