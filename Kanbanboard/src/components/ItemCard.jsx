@@ -12,7 +12,7 @@ export const ItemCard = (props) => {
 
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0) rotate(-2deg)`,
         pointerEvents: "auto",
       }
     : undefined;

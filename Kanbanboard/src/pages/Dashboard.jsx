@@ -5,11 +5,10 @@ import { useState } from "react";
 import { FormTask } from "../components/FormTask";
 import { MantineProvider } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
-import { DndContext } from "@dnd-kit/core";
-
+import { DndContext, DragOverlay } from "@dnd-kit/core";
 
 import { MultipleDroppables } from "../components/MultipleDroppables";
-
+import { ItemCard } from "../components/ItemCard";
 
 export const Dashboard = (props) => {
   const {
@@ -22,11 +21,19 @@ export const Dashboard = (props) => {
     deleteTask,
   } = props;
 
+  // const [activeId, setActiveId] = useState(null);
+
+  // function handleDragStart(event) {
+  //   console.log(event.active.id);
+  //   // When drag starts, set the active task ID
+  //   setActiveId(event.active.id);
+  // }
+
   function handleDragEnd(event) {
     // active = task i drag
     //over = container where i drop
     const { active, over } = event;
-    console.log(active, over);
+
     // if the task is not over a container stop the function
     if (!over) return;
     // else
@@ -48,6 +55,7 @@ export const Dashboard = (props) => {
             task
       )
     );
+    // setActiveId(null);
   }
 
   return (
@@ -68,7 +76,7 @@ export const Dashboard = (props) => {
         </div>
       )}
       <div className="list-container">
-        <DndContext onDragEnd={handleDragEnd}>
+        <DndContext onDragEnd={handleDragEnd} >
           {/* {!isDropped ? draggableMarkup : null}
               <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>  
               {isDropped ? draggableMarkup : 'Drop here'}
@@ -86,7 +94,25 @@ export const Dashboard = (props) => {
             setTaskDataUpdate={setTaskDataUpdate}
             setShowAddTask={setShowAddTask}
           />
-        </DndContext>{" "}
+
+          {/* Drag Overlay */}
+          {/* <DragOverlay
+            className="my-drag-overlay"
+            dropAnimation={{
+              duration: 400,
+              easing: "ease-in-out",
+              
+            }}
+            style={{
+     backgroundColor: "yellow",zIndex:999
+  }}
+            zIndex={3}
+          >
+            {activeId ? (
+              <ItemCard oneKanban={data.find((task) => task.id === activeId)} />
+            ) : null}
+          </DragOverlay> */}
+        </DndContext>
       </div>
     </>
   );

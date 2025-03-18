@@ -203,6 +203,7 @@ footer {
   padding: 10px;
   font-size: 0.9rem;
   font-family: 'Gunny Rewritten', sans-serif;
+  z-index: 2;
 }
 .card-container h3{
   text-align: center;
@@ -307,6 +308,8 @@ footer {
   width: 100%;
   margin-bottom: 10px;
 }
+
+
 /* .container {
   display: flex;
   flex-direction: column;
