@@ -20,12 +20,11 @@ export const About = () => {
       <section id="about-us-container">
         <div>
           <h2>Rafa</h2>
-          <img src="" alt="" />
+          <img src="../assets/img/photo.png" alt="Our Photo" />
           <p>description</p>
         </div>
         <div>
           <h2>Vince</h2>
-          <img src="" alt="" />
           <p>description</p>
         </div>
       </section>

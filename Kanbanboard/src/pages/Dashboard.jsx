@@ -1,27 +1,25 @@
-
-import { Doing } from '../components/Doing'
-import { Done } from '../components/Done'
-import { ToDo } from '../components/ToDo'
+import { useState } from 'react'
+// import { Doing } from '../components/Doing'
+// import { Done } from '../components/Done'
+// import { ToDo } from '../components/ToDo'
 import { FormTask } from '../components/FormTask'
 import { MantineProvider } from '@mantine/core';
 import { DatesProvider } from '@mantine/dates';
+import {DndContext} from '@dnd-kit/core';
+
+import {ItemCard} from '../components/ItemCard';
+import {MultipleDroppables} from '../components/MultipleDroppables';
+
 
 
 export const Dashboard = (props) => {
     const {data, setKanbanData, showAddTask, setTaskDataUpdate , setShowAddTask, taskDataUpdate, deleteTask} = props
-    // are u here ???? did u see my code ? 
-    // R
-    //  A
-    //   F
-    //    A
-    // R
-    //   A
-    //    F
-    //     A
-    // R
-    //   A
-    //     F
-    //       A DO u see my code?
+    
+    const [isDropped, setIsDropped] = useState(false);
+    const draggableMarkup = (
+      <ItemCard>Drag me</ItemCard>
+    );
+ 
   return (
     <>
     {
@@ -35,12 +33,31 @@ export const Dashboard = (props) => {
           
       </div>)
     }
-      
+      <DndContext onDragEnd={handleDragEnd}>
       <div className="list-container">
-              <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>  
-              <Doing data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>
-              <Done data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>
+              {/* {!isDropped ? draggableMarkup : null}
+              <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>  
+              {isDropped ? draggableMarkup : 'Drop here'}
+              </ToDo>
+              <Doing data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}> 
+              {isDropped ? draggableMarkup : 'Drop here'}
+              </Doing>
+              <Done data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>
+              {isDropped ? draggableMarkup : 'Drop here'}  
+              </Done> */}
+              {!isDropped ? draggableMarkup : null}
+              <MultipleDroppables data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>
+              {isDropped ? draggableMarkup : 'Drop here'}
+              </MultipleDroppables>
       </div>
+      </DndContext>
     </>
   )
+  function handleDragEnd(event) {
+    const {over} = event;
+
+    // If the item is dropped over a container, set it as the parent
+    // otherwise reset the parent to `null`
+    setParent(over ? over.id : null);
+  }
 }

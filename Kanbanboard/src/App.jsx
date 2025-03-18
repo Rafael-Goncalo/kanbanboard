@@ -12,6 +12,7 @@ import { About } from './pages/About'
 import { ItemDetails } from './pages/ItemDetails'
 import { NotFound } from './pages/NotFound'
 
+
 function App() {
   const [data, setKanbanData] = useState(kanbanData)
   const [showAddTask, setShowAddTask] = useState(false);
