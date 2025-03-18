@@ -1,6 +1,6 @@
 import React from 'react'
 import { ItemCard } from './ItemCard'
-import { Drag } from './Drag'
+
 
 
 export const Done = (props) => {
@@ -22,7 +22,7 @@ export const Done = (props) => {
                     }return null
                     
                 })}
-                <Drag/>
+                
             </div>
         
       )

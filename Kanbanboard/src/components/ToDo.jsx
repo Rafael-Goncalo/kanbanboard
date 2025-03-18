@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect } from 'react'
 import { ItemCard } from './ItemCard'
-import { Drag } from './Drag';
+
 
 
 export const ToDo = (props) => {
@@ -10,7 +10,7 @@ export const ToDo = (props) => {
     // useEffect(()=> setTasksToDo(data.filter(taskToDo => taskToDo === )))
     // console.log("Data in ToDo:", data);
   return (
-    
+      
         <div className="toDo-container">
             <h2>To Do:</h2>
             {data.map( oneKanban => {
@@ -25,7 +25,7 @@ export const ToDo = (props) => {
                 }return null
                 
             })}
-            <Drag/>
+           
         </div>
     
   )

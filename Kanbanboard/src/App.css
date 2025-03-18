@@ -87,6 +87,12 @@ footer {
   flex-direction: column;
 }
 
+.main-container{
+  display: flex;
+  min-height: 88vh;
+  border: 1px solid 	var(--white);
+}
+
 .content{
   display: flex;
   justify-content: center;
@@ -134,10 +140,15 @@ footer {
   color: var(--blue)
 }
 .btn-update{
-  color:var(--purple)
+  pointer-events: all;
+  cursor: pointer;
+  color:var(--purple);
+  
 }
 .btn-delete{
-  color:var(--red)
+  pointer-events: all;
+  cursor: pointer;
+  color:var(--red);
 }
 
 .about-entire-container {
@@ -210,7 +221,12 @@ footer {
 .card-container div:last-child{
   text-align: center;
 }
-
+.card-container-draggable{
+  cursor: grab;
+}
+.card-container-draggable:active{
+  cursor: grabbing;
+}
 .card-container-details{
   background-color: var(--green);
   color: var(--white);
@@ -218,17 +234,34 @@ footer {
   padding: 30px;
   text-align: center;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
 .date-container{
   font-size: 0.8rem;
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+
+.list-container{
+  background-color: var(--green);
+  color: 	var(--white);
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.list-container div{
+  width: 100%;
+}
+
+.toDo-container, .doing-container, .done-container{
+  width: 100% ;
+  border : 2px 	var(--white) solid;
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 70vh;
+  /* justify-content: space-between; */
 }
 
 .doing-container{
@@ -243,6 +276,19 @@ footer {
 }
 .done-container h2{
   color: var(--red);
+}
+
+.toDo-container{
+  border-color: var(--blue);
+}
+.toDo-container h2{
+  color: var(--blue);
+}
+
+.toDo-container h2, .done-container h2,.doing-container h2{
+  padding-bottom: 20px;
+  text-decoration:underline 3px;
+  text-underline-offset: 10px;
 }
 
 .form-container {
@@ -261,44 +307,6 @@ footer {
   width: 100%;
   margin-bottom: 10px;
 }
-
-.list-container{
-  background-color: var(--green);
-  color: 	var(--white);
-  padding: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.main-container{
-  display: flex;
-  min-height: 88vh;
-  border: 1px solid 	var(--white);
-}
-
-.toDo-container{
-  border-color: var(--blue);
-}
-.toDo-container h2{
-  color: var(--blue);
-}
-
-.toDo-container, .doing-container, .done-container{
-  width: 100% ;
-  border : 2px 	var(--white) solid;
-  border-radius: 20px;
-  padding: 20px
-  /* justify-content: space-between; */
-}
-
-.toDo-container h2, .done-container h2,.doing-container h2{
-  padding-bottom: 20px;
-  text-decoration:underline 3px;
-  text-underline-offset: 10px;
-}
-
 /* .container {
   display: flex;
   flex-direction: column;
