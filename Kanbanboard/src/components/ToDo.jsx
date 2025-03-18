@@ -1,12 +1,14 @@
 
-import React from 'react'
+import React, {useState, useEffect } from 'react'
 import { ItemCard } from './ItemCard'
+import { Drag } from './Drag';
 
 
 export const ToDo = (props) => {
-    const { data, deleteTask, setTaskDataUpdate, setShowAddTask} = props
-    
-    console.log("Data in ToDo:", data);
+    const {id, data, deleteTask, setTaskDataUpdate, setShowAddTask} = props
+    // const{ tasksToDo, setTasksToDo} = useState([])
+    // useEffect(()=> setTasksToDo(data.filter(taskToDo => taskToDo === )))
+    // console.log("Data in ToDo:", data);
   return (
     
         <div className="toDo-container">
@@ -23,7 +25,7 @@ export const ToDo = (props) => {
                 }return null
                 
             })}
-            
+            <Drag/>
         </div>
     
   )

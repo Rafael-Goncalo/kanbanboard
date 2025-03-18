@@ -1,5 +1,6 @@
 import React from 'react'
 import { ItemCard } from './ItemCard'
+import { Drag } from './Drag'
 
 export const Doing = (props) => {
     const { data, deleteTask , setTaskDataUpdate, setShowAddTask} = props
@@ -19,6 +20,7 @@ export const Doing = (props) => {
                  }return null
             })
             }
+            <Drag/>
     </div>
   )
 }

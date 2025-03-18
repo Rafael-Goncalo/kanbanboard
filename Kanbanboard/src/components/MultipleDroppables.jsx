@@ -27,17 +27,17 @@ export const  MultipleDroppables = (props) => {
   console.log("Data in MultipleDroppables:", data);
   const droppables = [
     {id:'To Do', element: <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>},
-    {id:'Doing', element: <Doing data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>},
+    {id:'In Progress', element: <Doing data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>},
     {id:'Done', element: <Done data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}/>},
   ]
   console.log(droppables)
     return (
-        <section>
+        <>
             {droppables.map(droppable => (
                 <Droppable id={droppable.id} key= {droppable.id} >
                     {droppable.element}  
                 </Droppable>
             ))}
-        </section>
+        </>
     )
   }

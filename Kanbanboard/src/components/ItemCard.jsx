@@ -5,14 +5,14 @@ import {useDraggable} from '@dnd-kit/core';
 export const ItemCard = (props) => {
     const { oneKanban , deleteTask , setTaskDataUpdate, setShowAddTask} =props
     // console.log(oneKanban)
-    if(oneKanban){
+    
       const {attributes, listeners, setNodeRef, transform} = useDraggable({
       id: oneKanban.id,
     }); 
     const style = transform ? {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
     } : undefined;
-    }
+    
     
    
   
