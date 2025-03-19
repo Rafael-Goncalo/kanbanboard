@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 // import kanbanData from '../assets/kanban.json'
 import {useParams} from "react-router-dom"
 import { Link } from 'react-router-dom'
@@ -13,10 +13,23 @@ export const ItemDetails = (props) => {
   const oneTask = data.find(task => task.id === taskId)
   const nav = useNavigate();
   
+  useEffect(()=>{
+    if(taskDataUpdate){
+      setTaskDataUpdate(null)
+    }
+    if(showAddTask)
+    {
+      setShowAddTask(false)
+    }
+  },[])
+  
   return (
     <>
+    
     {
+      
       showAddTask && (
+        <div className="list-container">
       <div className="form-container">
       <MantineProvider>
         <DatesProvider>
@@ -24,7 +37,7 @@ export const ItemDetails = (props) => {
         </DatesProvider>
       </MantineProvider>
           
-      </div>)
+      </div> </div>)
     }
       <div className="card-container-details">
           <h2>{oneTask.title}</h2>

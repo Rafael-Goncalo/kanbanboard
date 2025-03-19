@@ -5,27 +5,32 @@ export const About = () => {
     <>
     <div className='about-entire-container'>
       <section id="about-container">
-      <h2>Kanban Instructions</h2>
+      <h2>How to use the Kanban Board:</h2>
       <ul>
-        <li>Create a card and give it a descriptive title.</li>
-        <li>Assign a team member to be responsible for the task.</li>
-        <li>Add details explaining what the task involves.</li>
-        <li>Set an importance level to prioritize your work.</li>
-        <li>Select a target date for completion.</li>
-        <li>Choose a state: To Do, Doing, or Done.</li>
+        <p>Press Add Task to open the form</p>
+        <p>Fill in the form as you wish</p>
+        <p>Post it</p>
       </ul>
-      <h3>Time to Start!</h3>
+      <h3>Voilà!</h3>
         
       </section>
       <section id="about-us-container">
         <div>
           <h2>Rafa</h2>
-          <img src="../assets/img/photo.png" alt="Our Photo" />
-          <p>description</p>
+          <p>is</p>
+          <p>student/student</p>
+          <p>from</p>
+          <p>Brazil</p>
         </div>
+        <div className='about-photo'>
+          <img src={"./src/assets/img/photo.png"} alt="Our Photo" />
+          </div>
         <div>
           <h2>Vince</h2>
-          <p>description</p>
+          <p>is</p>
+          <p>teacher/ student</p>
+          <p>from</p>
+          <p>France</p>
         </div>
       </section>
     </div>

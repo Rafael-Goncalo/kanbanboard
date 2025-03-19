@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {DatePickerInput} from '@mantine/dates';
 import {v4 as uuidv4} from 'uuid';
 import dayjs from 'dayjs';
+import toast from 'react-hot-toast';
 
 export const FormTask = (props) => {
   const {data, setKanbanData, taskDataUpdate, setTaskDataUpdate, setShowAddTask} = props;
@@ -78,13 +79,37 @@ export const FormTask = (props) => {
       )
       // i change data with the new array
       setKanbanData(updatedData)
-     console.log(updatedData)
+      toast.success(`Task Successfully update!`, {
+        style: {
+          border: '2px solid rgb(255, 255, 255)',
+          backgroundColor: '#073e18',
+          padding: '16px',
+          color: '#FBFBFD',
+        },
+        iconTheme: {
+          primary: '#FBFBFD',
+          secondary: '#9063CD',
+        },
+      })
+    //  console.log(updatedData)
       // i have nothing to update now so taskDataUpdate need to be null
       setTaskDataUpdate(null)
       
 // create part
     }else{
       setKanbanData([...data, {...newTask, dueDate: dayjs(newTask.dueDate).add(1, 'day').toDate()}])
+      toast.success('Task Successfully created!', {
+        style: {
+          border: '2px solid rgb(255, 255, 255)',
+          backgroundColor: '#073e18',
+          padding: '16px',
+          color: '#FBFBFD',
+        },
+        iconTheme: {
+          primary: '#FBFBFD',
+          secondary: '#073e18',
+        },
+      })
     }
      //  i set all input value with default value
       resetForm()
@@ -93,15 +118,15 @@ export const FormTask = (props) => {
 
   }
   return (
-    <form className='form-container' onSubmit={handleFormSubmit}>
+    <form  onSubmit={handleFormSubmit}>
       <h3>{taskDataUpdate ? `Update ${taskDataUpdate.title}` : 'Create new Task' }</h3>
       <div> 
 
-        <label> Title 
-          <input type="text" name="title" placeholder="task title" value={newTask.title} onChange={handleOnChange}/>
+        <label>Task
+          <input type="text" name="title" placeholder="name your task here" value={newTask.title} onChange={handleOnChange}/>
         </label>
-        <label> assignee
-            <input type="text" name="assignee" placeholder="name assignee" value={newTask.assignee} onChange={handleOnChange}/>
+        <label>Whom
+            <input type="text" name="assignee" placeholder="name the assignee here" value={newTask.assignee} onChange={handleOnChange}/>
         </label>
         <DatePickerInput value={newTask.dueDate} onChange={(date) => setNewTask({...newTask, dueDate: date || new Date()})}  label="Deadline" placeholder='Due date' />
     
@@ -126,14 +151,13 @@ export const FormTask = (props) => {
         </label>
 
       </div>
-{/* id="text-area" */}
       <div>
         <label>
-            <input type="textarea" name="description" placeholder="describe your task here" value={newTask.description} onChange={handleOnChange}/>
+            <textarea className="text-area"type="textarea" name="description" placeholder="describe your task here" value={newTask.description} onChange={handleOnChange}/>
         </label>
       </div>
 
-      <button type="submit">{taskDataUpdate ? 'Update' : 'Create'}</button>
+      <button type="submit">{taskDataUpdate ? 'Update' : 'Post It'}</button>
       
     </form>
   )

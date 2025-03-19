@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { Doing } from '../components/Doing'
 // import { Done } from '../components/Done'
 // import { ToDo } from '../components/ToDo'
@@ -6,6 +6,7 @@ import { FormTask } from "../components/FormTask";
 import { MantineProvider } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
+
 
 import { MultipleDroppables } from "../components/MultipleDroppables";
 import { ItemCard } from "../components/ItemCard";
@@ -19,15 +20,27 @@ export const Dashboard = (props) => {
     setShowAddTask,
     taskDataUpdate,
     deleteTask,
+    
   } = props;
+  
 
-  // const [activeId, setActiveId] = useState(null);
+  useEffect(()=>{
+    if(taskDataUpdate){
+      setTaskDataUpdate(null)
+    }
+    if(showAddTask)
+    {
+      setShowAddTask(false)
+    }
+  },[])
 
-  // function handleDragStart(event) {
-  //   console.log(event.active.id);
-  //   // When drag starts, set the active task ID
-  //   setActiveId(event.active.id);
-  // }
+  const [activeId, setActiveId] = useState(null);
+
+  function handleDragStart(event) {
+    console.log(event.active.id);
+    // When drag starts, set the active task ID
+    setActiveId(event.active.id);
+  }
 
   function handleDragEnd(event) {
     // active = task i drag
@@ -60,8 +73,11 @@ export const Dashboard = (props) => {
 
   return (
     <>
+      
+      <div className="list-container">
+
       {showAddTask && (
-        <div className="form-container">
+        <div className='form-container'>
           <MantineProvider>
             <DatesProvider>
               <FormTask
@@ -70,13 +86,13 @@ export const Dashboard = (props) => {
                 taskDataUpdate={taskDataUpdate}
                 setTaskDataUpdate={setTaskDataUpdate}
                 setShowAddTask={setShowAddTask}
+                
               />
             </DatesProvider>
           </MantineProvider>
         </div>
       )}
-      <div className="list-container">
-        <DndContext onDragEnd={handleDragEnd} >
+        <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
           {/* {!isDropped ? draggableMarkup : null}
               <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>  
               {isDropped ? draggableMarkup : 'Drop here'}
@@ -96,7 +112,7 @@ export const Dashboard = (props) => {
           />
 
           {/* Drag Overlay */}
-          {/* <DragOverlay
+          <DragOverlay
             className="my-drag-overlay"
             dropAnimation={{
               duration: 400,
@@ -111,7 +127,7 @@ export const Dashboard = (props) => {
             {activeId ? (
               <ItemCard oneKanban={data.find((task) => task.id === activeId)} />
             ) : null}
-          </DragOverlay> */}
+          </DragOverlay>
         </DndContext>
       </div>
     </>
