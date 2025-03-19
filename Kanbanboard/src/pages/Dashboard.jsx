@@ -7,7 +7,6 @@ import { MantineProvider } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
 import { DndContext, DragOverlay } from "@dnd-kit/core";
 
-
 import { MultipleDroppables } from "../components/MultipleDroppables";
 import { ItemCard } from "../components/ItemCard";
 
@@ -20,19 +19,17 @@ export const Dashboard = (props) => {
     setShowAddTask,
     taskDataUpdate,
     deleteTask,
-    
   } = props;
-  
 
-  useEffect(()=>{
-    if(taskDataUpdate){
-      setTaskDataUpdate(null)
+  // to clean taskDataUpdate Variable when u close the form or come from other page with form open
+  useEffect(() => {
+    if (taskDataUpdate) {
+      setTaskDataUpdate(null);
     }
-    if(showAddTask)
-    {
-      setShowAddTask(false)
+    if (showAddTask) {
+      setShowAddTask(false);
     }
-  },[])
+  }, []);
 
   const [activeId, setActiveId] = useState(null);
 
@@ -73,25 +70,26 @@ export const Dashboard = (props) => {
 
   return (
     <>
-      
       <div className="list-container">
-
-      {showAddTask && (
-        <div className='form-container'>
-          <MantineProvider>
-            <DatesProvider>
-              <FormTask
-                data={data}
-                setKanbanData={setKanbanData}
-                taskDataUpdate={taskDataUpdate}
-                setTaskDataUpdate={setTaskDataUpdate}
-                setShowAddTask={setShowAddTask}
-                
-              />
-            </DatesProvider>
-          </MantineProvider>
-        </div>
-      )}
+        {/* if U want to show form */}
+        {showAddTask ? (
+          <div className="form-container">
+            <MantineProvider>
+              <DatesProvider>
+                <FormTask
+                  data={data}
+                  setKanbanData={setKanbanData}
+                  taskDataUpdate={taskDataUpdate}
+                  setTaskDataUpdate={setTaskDataUpdate}
+                  setShowAddTask={setShowAddTask}
+                />
+              </DatesProvider>
+            </MantineProvider>
+          </div>
+        ) : (
+          // else if u want to hide form check if u have something insade taskDataUpdate and set to null because u dont need to update the task if u close the form without submit
+          taskDataUpdate && setTaskDataUpdate(null)
+        )}
         <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
           {/* {!isDropped ? draggableMarkup : null}
               <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>  
@@ -113,16 +111,15 @@ export const Dashboard = (props) => {
 
           {/* Drag Overlay */}
           <DragOverlay
-            className="my-drag-overlay"
             dropAnimation={{
-              duration: 400,
-              easing: "ease-in-out",
-              
+              duration: 500,
+              easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
             }}
             style={{
-     backgroundColor: "yellow",zIndex:999
-  }}
-            zIndex={3}
+              cursor: "grabbing",
+              opacity: "0.9",
+              zIndex: 4,
+            }}
           >
             {activeId ? (
               <ItemCard oneKanban={data.find((task) => task.id === activeId)} />

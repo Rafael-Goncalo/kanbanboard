@@ -10,7 +10,10 @@ function Droppable(props) {
     id: props.id,
   });
   const style = {
-    color: isOver ? 'green' : undefined,
+    backgroundColor: isOver ? '#1c5c33' : undefined,
+    borderRadius: "20px",
+    boxShadow: isOver ?"0 0 10px rgba(255, 255, 255, 0.3)": undefined,
+    transform: isOver ?"scale(1.02)": undefined
   };
   
   

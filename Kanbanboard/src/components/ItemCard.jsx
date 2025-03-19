@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDraggable } from "@dnd-kit/core";
 
@@ -10,16 +10,30 @@ export const ItemCard = (props) => {
     id: oneKanban.id,
   });
 
+  const [bgColor, setBgColor] = useState('');
+
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0) rotate(-2deg)`,
-        pointerEvents: "auto",
+        // transform: `translate3d(${transform.x}px, ${transform.y}px, 0) rotate(-2deg)`,
+        // pointerEvents: "auto",
+        opacity: '0.2',
+        
       }
     : undefined;
+    useEffect(()=> {
+      if(oneKanban.priority === "High"){
+      setBgColor('bgRose') 
+      }else if(oneKanban.priority === "Medium"){
+      setBgColor('bgOrange') 
+      }else{
+       setBgColor('') 
+    }
+    })
+    
 
   // console.log(oneKanban)
   return (
-    <div ref={setNodeRef} style={style} className="card-container">
+    <div ref={setNodeRef} style={style} className={`card-container ${bgColor}`}>
       <div className="card-container-draggable" {...listeners} {...attributes}>
         <h3>{oneKanban.title}</h3>
 

@@ -26,18 +26,26 @@ export const ItemDetails = (props) => {
   return (
     <>
     
-    {
-      
-      showAddTask && (
-        <div className="list-container">
-      <div className="form-container">
-      <MantineProvider>
-        <DatesProvider>
-          <FormTask data={data} setKanbanData= {setKanbanData} taskDataUpdate={taskDataUpdate} setTaskDataUpdate= {setTaskDataUpdate} setShowAddTask = {setShowAddTask}/>
-        </DatesProvider>
-      </MantineProvider>
-          
-      </div> </div>)
+  {/* if U want to show form */}
+  {showAddTask ? (
+    <div className="list-container">
+        <div className='form-container'>
+          <MantineProvider>
+            <DatesProvider>
+              <FormTask
+                data={data}
+                setKanbanData={setKanbanData}
+                taskDataUpdate={taskDataUpdate}
+                setTaskDataUpdate={setTaskDataUpdate}
+                setShowAddTask={setShowAddTask}
+                
+              />
+            </DatesProvider>
+          </MantineProvider>
+        </div></div>
+      )
+      // else if u want to hide form check if u have something insade taskDataUpdate and set to null because u dont need to update the task if u close the form without submit
+      : taskDataUpdate && setTaskDataUpdate(null)
     }
       <div className="card-container-details">
           <h2>{oneTask.title}</h2>

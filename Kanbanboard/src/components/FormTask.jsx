@@ -119,7 +119,9 @@ export const FormTask = (props) => {
   }
   return (
     <form  onSubmit={handleFormSubmit}>
-      <h3>{taskDataUpdate ? `Update ${taskDataUpdate.title}` : 'Create new Task' }</h3>
+      <h2>{taskDataUpdate ? `Update : ` : 'Create new Task' }</h2>
+      {taskDataUpdate &&
+      <h3>{taskDataUpdate.title}</h3>}
       <div> 
 
         <label>Task
