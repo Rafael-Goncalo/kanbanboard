@@ -8,11 +8,17 @@ import { DatesProvider } from '@mantine/dates';
 import { useNavigate } from "react-router-dom";
 
 export const ItemDetails = (props) => {
+  // recover props data
   const {data, showAddTask, setKanbanData, taskDataUpdate, setTaskDataUpdate, setShowAddTask, deleteTask} = props
+  // need url taskId
   const taskId = useParams().taskId
+  // find the task with taskId
   const oneTask = data.find(task => task.id === taskId)
+  // initialize the navigation
   const nav = useNavigate();
   
+  // one time if u already have a task to update when u arrive on the page, you delete it
+  // and if the form is displayed, you hide it
   useEffect(()=>{
     if(taskDataUpdate){
       setTaskDataUpdate(null)
@@ -47,6 +53,7 @@ export const ItemDetails = (props) => {
       // else if u want to hide form check if u have something insade taskDataUpdate and set to null because u dont need to update the task if u close the form without submit
       : taskDataUpdate && setTaskDataUpdate(null)
     }
+
       <div className="card-container-details">
           <h2>{oneTask.title}</h2>
 
@@ -57,6 +64,7 @@ export const ItemDetails = (props) => {
           <div>Priority: {oneTask.priority}</div>
           {/* Importance */}
           
+          {/* manage the time date if u have Object date and change it to a string, or just show string date  */}
           <div>
           Created: {typeof oneTask.createdDate === "object" ? oneTask.createdDate.toISOString().split("T")[0] : oneTask.createdDate }
           </div>

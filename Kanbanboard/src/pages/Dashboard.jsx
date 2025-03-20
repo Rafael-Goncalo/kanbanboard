@@ -91,17 +91,7 @@ export const Dashboard = (props) => {
           taskDataUpdate && setTaskDataUpdate(null)
         )}
         <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
-          {/* {!isDropped ? draggableMarkup : null}
-              <ToDo data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>  
-              {isDropped ? draggableMarkup : 'Drop here'}
-              </ToDo>
-              <Doing data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}> 
-              {isDropped ? draggableMarkup : 'Drop here'}
-              </Doing>
-              <Done data = {data} deleteTask = {deleteTask} setTaskDataUpdate={setTaskDataUpdate} setShowAddTask={setShowAddTask}>
-              {isDropped ? draggableMarkup : 'Drop here'}  
-              </Done> */}
-
+        
           <MultipleDroppables
             data={data}
             deleteTask={deleteTask}
